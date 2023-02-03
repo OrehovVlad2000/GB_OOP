@@ -9,21 +9,6 @@ public class Wizard extends BaseHero{
 
     @Override
     public void step(ArrayList<BaseHero> heroList) {
-//        int minHealth = 100;
-//        int minIndex = 0;
-//        for (int i = 0; i < heroList.size(); i++) {
-//            String[] params = heroList.get(i).getInfo().split(" ");
-//            if (Integer.parseInt(params[1]) < 100) {
-//                int temp = Integer.parseInt(params[1]);
-//                if (temp < minHealth) {
-//                    minHealth = temp;
-//                    minIndex = i;
-//                }
-//            }
-//        }
-//        heroList.get(minIndex).health -= damage[0];
-//        System.out.println();
-//        System.out.println("Вылечен:\n" + heroList.get(minIndex));
         int max = 100;
         int maxi = 0;
         for (int i = 0; i < heroList.size(); i++) {
