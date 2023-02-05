@@ -1,3 +1,5 @@
+package units;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -29,12 +31,17 @@ public abstract class BaseHero implements BaseInterface {
 
     @Override
     public String getInfo() {
-        return role + " " + (health * 100 / maxHealth) + "" + "%";
+        return role + ": " + health + " " + maxHealth + " " + (health * 100 / maxHealth) + "" + "%";
     }
 
     @Override
     public String toString(){
         return "Name: " + name + ", Role: " + role + ", Attack: " + attack + ", Defence: " + defence + ", Damage: " +
                 Arrays.toString(damage) + ", Health: " + health + ", Speed: " + speed;
+    }
+
+    @Override
+    public String getRole(){
+        return role;
     }
 }

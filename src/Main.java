@@ -1,5 +1,8 @@
+import units.*;
+
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,9 +11,29 @@ public class Main {
         Random random = new Random();
         generateHeroes(heroesOne, 10, random, 1);
         generateHeroes(heroesTwo, 10, random, 2);
-        heroesOne.forEach(n -> System.out.print(n.getInfo() + ","));
-        System.out.println("");
-        heroesOne.forEach(n -> n.step(heroesOne));
+        heroesOne.forEach(n -> System.out.print(n.toString() + ",\n"));
+        System.out.println("===========");
+        sortFarmer(heroesOne);
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            heroesOne.forEach(n -> System.out.print(n.toString() + ",\n"));
+            System.out.println("");
+            heroesOne.forEach(n -> n.step(heroesOne));
+            scanner.nextLine();
+        }
+
+    }
+
+    public static void sortFarmer(ArrayList<BaseHero> list){
+        ArrayList<BaseHero> farmerTemp = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i).getRole().equals("Farmer")){
+                farmerTemp.add(list.get(i));
+                list.remove(i);
+                i = 0;
+            }
+        }
+        list.addAll(farmerTemp);
     }
 
     public static void generateHeroes(ArrayList<BaseHero> heroesList, int quantity, Random rand, int mode) {
