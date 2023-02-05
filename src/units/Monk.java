@@ -1,7 +1,9 @@
 package units;
 
+import java.util.ArrayList;
+
 public class Monk extends Wizard{
-    public Monk(String name){
-        super(name, "Monk", 12, 7, new int[] {-4, -4}, 30, 5, 1);
+    public Monk(ArrayList<BaseHero> gang, String name, int x, int y){
+        super(gang, name, "Monk", 12, 7, new int[] {-4, -4}, 30, 5, x, y, 1);
     }
 }

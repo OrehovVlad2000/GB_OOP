@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Archer extends BaseHero {
     int shoots;
-    public Archer(String name, String role, int attack, int defence, int[] damage, int health, int speed, int shoots) {
-        super(name, role, attack, defence, damage, health, speed);
+    public Archer(ArrayList<BaseHero> gang, String name, String role, int attack, int defence, int[] damage, int health, int speed, int x, int y, int shoots) {
+        super(gang, name, role, attack, defence, damage, health, speed, x, y);
         this.shoots = shoots;
     }
 

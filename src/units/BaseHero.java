@@ -5,11 +5,14 @@ import java.util.Arrays;
 import java.util.Random;
 
 public abstract class BaseHero implements BaseInterface {
-    String name, role;
-    int attack, defence, health, maxHealth, speed;
-    int[] damage;
+    protected String name, role;
+    protected int attack, defence, health, maxHealth, speed, x, y;
+    protected int[] damage;
+    protected Vector2 position;
+    protected ArrayList<BaseHero> gang;
 
-    public BaseHero(String name, String role, int attack, int defence, int[] damage, int health, int speed){
+    public BaseHero(ArrayList<BaseHero> gang, String name, String role, int attack, int defence, int[] damage, int health, int speed, int x, int y) {
+        this.gang = gang;
         this.name = name;
         this.role = role;
         this.attack = attack;
@@ -18,6 +21,9 @@ public abstract class BaseHero implements BaseInterface {
         this.maxHealth = health;
         this.health = maxHealth - new Random().nextInt(maxHealth);
         this.speed = speed;
+        this.position = new Vector2(x, y);
+        this.x = x;
+        this.y = y;
     }
 
     public int getHealth() {
@@ -31,17 +37,22 @@ public abstract class BaseHero implements BaseInterface {
 
     @Override
     public String getInfo() {
-        return role + ": " + health + " " + maxHealth + " " + (health * 100 / maxHealth) + "" + "%";
+//        return role + ": " + health + " " + maxHealth + " " + (health * 100 / maxHealth) + "" + "%";
+        return String.format("%s:\t%s\t⚔ %d\t\uD83D\uDEE1 %d\t♥%d\t☠%d",role, name, attack,defence,health,(damage[0] + damage[1])/2,speed);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Name: " + name + ", Role: " + role + ", Attack: " + attack + ", Defence: " + defence + ", Damage: " +
                 Arrays.toString(damage) + ", Health: " + health + ", Speed: " + speed;
     }
 
     @Override
-    public String getRole(){
+    public String getRole() {
         return role;
+    }
+
+    public Vector2 getPosition() {
+        return position;
     }
 }

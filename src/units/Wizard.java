@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Wizard extends BaseHero {
     int mana;
-    public Wizard(String name, String role, int attack, int defence, int[] damage, int health, int speed, int mana) {
-        super(name, role, attack, defence, damage, health, speed);
+    public Wizard(ArrayList<BaseHero> gang, String name, String role, int attack, int defence, int[] damage, int health, int speed, int x, int y, int mana) {
+        super(gang, name, role, attack, defence, damage, health, speed, x, y);
         this.mana = mana;
     }
 
