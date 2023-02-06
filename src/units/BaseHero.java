@@ -6,7 +6,8 @@ import java.util.Random;
 
 public abstract class BaseHero implements BaseInterface {
     protected String name, role;
-    protected int attack, defence, health, maxHealth, speed, x, y;
+    protected int attack, defence, maxHealth, speed, x, y;
+    protected float health;
     protected int[] damage;
     protected Vector2 position;
     protected ArrayList<BaseHero> gang;
@@ -19,7 +20,7 @@ public abstract class BaseHero implements BaseInterface {
         this.defence = defence;
         this.damage = damage;
         this.maxHealth = health;
-        this.health = maxHealth - new Random().nextInt(maxHealth);
+        this.health = maxHealth;
         this.speed = speed;
         this.position = new Vector2(x, y);
         this.x = x;
@@ -38,7 +39,8 @@ public abstract class BaseHero implements BaseInterface {
     @Override
     public String getInfo() {
 //        return role + ": " + health + " " + maxHealth + " " + (health * 100 / maxHealth) + "" + "%";
-        return String.format("%s:\t%s\t⚔ %d\t\uD83D\uDEE1 %d\t♥%d\t☠%d",role, name, attack,defence,health,(damage[0] + damage[1])/2,speed);
+        return String.format("%s:\t%s\t⚔ %d\t\uD83D\uDEE1 %d\t♥%d\t☠%d",
+                role, name, attack,defence,(int) health,(damage[0] + damage[1])/2,speed);
     }
 
     @Override
@@ -54,5 +56,14 @@ public abstract class BaseHero implements BaseInterface {
 
     public Vector2 getPosition() {
         return position;
+    }
+
+    protected void getDamage(float attackPower){
+        this.health -= attackPower;
+        if(this.health < 0){
+            this.health = 0;
+        }else if (this.health > maxHealth){
+            this.health = maxHealth;
+        }
     }
 }

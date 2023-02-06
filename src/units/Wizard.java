@@ -11,13 +11,16 @@ public class Wizard extends BaseHero {
 
     @Override
     public void step(ArrayList<BaseHero> heroList) {
+        if (health == 0){
+            return;
+        }
         int max = 100;
         int maxi = 0;
-        for (int i = 0; i < heroList.size(); i++) {
-            if (heroList.get(i).health == 0) {
+        for (int i = 0; i < gang.size(); i++) {
+            if (gang.get(i).health == 0) {
                 continue;
             }
-            int currentHealth = heroList.get(i).getHealth();
+            int currentHealth = gang.get(i).getHealth();
             if (currentHealth < 100) {
                 if (currentHealth < max) {
                     max = currentHealth;
@@ -25,14 +28,22 @@ public class Wizard extends BaseHero {
                 }
             }
         }
-        if ((heroList.get(maxi).health - damage[0]) > heroList.get(maxi).maxHealth) {
-            heroList.get(maxi).health = heroList.get(maxi).maxHealth;
-        } else {
-            heroList.get(maxi).health -= damage[0];
-        System.out.println();
-        System.out.println("Вылечен:\n" + heroList.get(maxi));
+        if (max < 100){
+            treatment(gang.get(maxi));
         }
+    }
 
+    private void treatment(BaseHero wounded){
+        float healingPower = damage[0];
+        wounded.getDamage(healingPower);
+        if (wounded.health == wounded.maxHealth){
+            System.out.printf("\nПерсонаж %s %s полностью вылечил персонажа %s %s. Текущее здоровье: %d/%d",
+                    role, name, wounded.role, wounded.name, (int) wounded.health, wounded.maxHealth);
+        }else {
+            System.out.printf("\nПерсонаж %s %s вылечил персонажа %s %s на %d ед. здоровья. Текущее здоровье: %d/%d",
+                    role, name, wounded.role, wounded.name, (int) Math.abs(healingPower), (int) wounded.health,
+                    wounded.maxHealth);
+        }
     }
 
     @Override
