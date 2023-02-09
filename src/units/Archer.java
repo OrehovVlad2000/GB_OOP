@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class Archer extends BaseHero {
     int shoots;
-    public Archer(ArrayList<BaseHero> gang, String name, String role, int attack, int defence, int[] damage, int health, int speed, int x, int y, int shoots) {
-        super(gang, name, role, attack, defence, damage, health, speed, x, y);
+    public Archer(ArrayList<BaseHero> gang, String name, String role, int attack, int defence, int[] damage, int health,
+                  int speed, int x, int y, String team, int shoots) {
+        super(gang, name, role, attack, defence, damage, health, speed, x, y, team);
         this.shoots = shoots;
     }
 
@@ -57,39 +58,5 @@ public class Archer extends BaseHero {
                 System.out.println("\nУ бойца: " + this.getRole() + " по имени: " + name + " закончились стрелы!!!!!");
             }
         }
-
-//        for (int i = 0; i < heroList.size(); i++) {
-//            if(heroList.get(i).getRole().equals("Farmer")) {
-//                if(((Farmer) heroList.get(i)).supply){
-//                    ((Farmer) heroList.get(i)).supply = false;
-//                    System.out.println("\nБоец: " + this.getRole() + " по имени: " + name + " делает один выстрел");
-//                    System.out.println("Оставшееся кол-во стрел: " + shoots);
-//                    return;
-//                }else {
-//                    continue;
-//                }
-//            }
-//        }
-//        if (shoots > 0){
-//            shoots --;
-//            System.out.println("\nБоец: " + this.getRole() + " по имени: " + name + " делает один выстрел");
-//            System.out.println("Оставшееся кол-во стрел: " + shoots);
-//        }else{
-//            System.out.println("\nУ бойца: " + this.getRole() + " по имени: " + name + " закончились стрелы!!!!!");
-//        }
-
-    }
-
-    private Vector2 getTarget(ArrayList<BaseHero> heroList){
-        float minDistance = getPosition().getDistance(heroList.get(0).getPosition().x, heroList.get(0).getPosition().y);
-        int minIndex = 0;
-        for (int i = 0; i < heroList.size(); i++) {
-            float temp = getPosition().getDistance(heroList.get(0).getPosition().x, heroList.get(0).getPosition().y);
-            if (temp < minDistance){
-                minDistance = temp;
-                minIndex = i;
-            }
-        }
-        return new Vector2(minDistance, minIndex);
     }
 }

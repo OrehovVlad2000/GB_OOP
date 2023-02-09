@@ -46,10 +46,10 @@ public class Main {
         int y = 1;
         for (int i = 0; i < GANG_SIZE; i++) {
             switch (random.nextInt(4)) {
-                case 0 -> whiteFarmer.add(new Farmer(whiteSide, namesList[random.nextInt(namesSize)], x, y++));
-                case 1 -> whiteSide.add(new Rogue(whiteSide, namesList[random.nextInt(namesSize)], x, y++));
-                case 2 -> whiteSide.add(new Sniper(whiteSide, namesList[random.nextInt(namesSize)], x, y++));
-                case 3 -> whiteSide.add(new Monk(whiteSide, namesList[random.nextInt(namesSize)], x, y++));
+                case 0 -> whiteFarmer.add(new Farmer(whiteSide, namesList[random.nextInt(namesSize)], x, y++, "white"));
+                case 1 -> whiteSide.add(new Rogue(whiteSide, namesList[random.nextInt(namesSize)], x, y++, "white"));
+                case 2 -> whiteSide.add(new Rogue(whiteSide, namesList[random.nextInt(namesSize)], x, y++, "white"));
+                case 3 -> whiteSide.add(new Rogue(whiteSide, namesList[random.nextInt(namesSize)], x, y++, "white"));
             }
         }
         whiteSide.addAll(whiteFarmer);
@@ -59,10 +59,10 @@ public class Main {
         for (int i = 0; i < GANG_SIZE; i++) {
 
             switch (random.nextInt(4)) {
-                case 0 -> darkFarmer.add(new Farmer(darkSide, namesList[random.nextInt(namesSize)], x, y++));
-                case 1 -> darkSide.add(new Spearman(darkSide, namesList[random.nextInt(namesSize)], x, y++));
-                case 2 -> darkSide.add(new Crossbowman(darkSide, namesList[random.nextInt(namesSize)], x, y++));
-                case 3 -> darkSide.add(new Mage(darkSide, namesList[random.nextInt(namesSize)], x, y++));
+                case 0 -> darkFarmer.add(new Farmer(darkSide, namesList[random.nextInt(namesSize)], x, y++, "dark"));
+                case 1 -> darkSide.add(new Spearman(darkSide, namesList[random.nextInt(namesSize)], x, y++, "dark"));
+                case 2 -> darkSide.add(new Spearman(darkSide, namesList[random.nextInt(namesSize)], x, y++, "dark"));
+                case 3 -> darkSide.add(new Spearman(darkSide, namesList[random.nextInt(namesSize)], x, y++, "dark"));
             }
         }
         darkSide.addAll(darkFarmer);
