@@ -48,8 +48,8 @@ public class Main {
             switch (random.nextInt(4)) {
                 case 0 -> whiteFarmer.add(new Farmer(whiteSide, namesList[random.nextInt(namesSize)], x, y++, "white"));
                 case 1 -> whiteSide.add(new Rogue(whiteSide, namesList[random.nextInt(namesSize)], x, y++, "white"));
-                case 2 -> whiteSide.add(new Rogue(whiteSide, namesList[random.nextInt(namesSize)], x, y++, "white"));
-                case 3 -> whiteSide.add(new Rogue(whiteSide, namesList[random.nextInt(namesSize)], x, y++, "white"));
+                case 2 -> whiteSide.add(new Mage(whiteSide, namesList[random.nextInt(namesSize)], x, y++, "white"));
+                case 3 -> whiteSide.add(new Sniper(whiteSide, namesList[random.nextInt(namesSize)], x, y++, "white"));
             }
         }
         whiteSide.addAll(whiteFarmer);
@@ -61,8 +61,8 @@ public class Main {
             switch (random.nextInt(4)) {
                 case 0 -> darkFarmer.add(new Farmer(darkSide, namesList[random.nextInt(namesSize)], x, y++, "dark"));
                 case 1 -> darkSide.add(new Spearman(darkSide, namesList[random.nextInt(namesSize)], x, y++, "dark"));
-                case 2 -> darkSide.add(new Spearman(darkSide, namesList[random.nextInt(namesSize)], x, y++, "dark"));
-                case 3 -> darkSide.add(new Spearman(darkSide, namesList[random.nextInt(namesSize)], x, y++, "dark"));
+                case 2 -> darkSide.add(new Monk(darkSide, namesList[random.nextInt(namesSize)], x, y++, "dark"));
+                case 3 -> darkSide.add(new Crossbowman(darkSide, namesList[random.nextInt(namesSize)], x, y++, "dark"));
             }
         }
         darkSide.addAll(darkFarmer);
