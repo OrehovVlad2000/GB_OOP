@@ -41,10 +41,10 @@ public abstract class BaseHero implements BaseInterface {
     @Override
     public String getInfo() {
 //        return role + ": " + health + " " + maxHealth + " " + (health * 100 / maxHealth) + "" + "%";
-//        return String.format("%-1s: %-2s ⚔️%-3d \uD83D\uDEE1️%-3d ❤️%-3d ☠%-3d",
-//                role, name, attack,defence,(int) health,(damage[0] + damage[1])/2,speed);
-        return String.format("%-10s %-13s %s: %-3d/ %-3d %s: %-5d |", name, role, "\uD83E\uDDE1",
-                (int) health, maxHealth, "⚔", attack);
+        return String.format("%-1s: %-2s ⚔️%-3d \uD83D\uDEE1️%-3d ❤️%-3d ☠%-3d",
+                role, name, attack,defence,(int) health,(damage[0] + damage[1])/2,speed);
+//        return String.format("%-10s %-13s %s: %-3d/ %-3d %s: %-5d |", name, role, "\uD83E\uDDE1",
+//                (int) health, maxHealth, "⚔", attack);
     }
 
     @Override
@@ -97,5 +97,9 @@ public abstract class BaseHero implements BaseInterface {
 
     public String getTeam() {
         return team;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 }
