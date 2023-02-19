@@ -1,6 +1,7 @@
 import units.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,14 +15,16 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         while (true){
+            ArrayList<BaseHero> units = new ArrayList<>();
+            units.addAll(whiteSide);
+            units.addAll(darkSide);
+            Comparator<BaseHero> comparator = Comparator.comparing(BaseHero::getSpeed);
+            units.sort(comparator);
             ConsoleView.view();
+            System.out.println("Press ENTER");
             scanner.nextLine();
 
-            System.out.println("\nХодит команда WhiteSide");
-            whiteSide.forEach(n -> n.step(darkSide));
-            System.out.println("\n\nХодит команда DarkSide");
-            darkSide.forEach(n -> n.step(whiteSide));
-//            System.out.println();
+            units.forEach(n -> n.step(units));
             scanner.nextLine();
         }
     }
